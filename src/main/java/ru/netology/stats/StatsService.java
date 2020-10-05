@@ -8,14 +8,13 @@ public class StatsService {
         }
         return sum;
     }
-    public static int salesAverage( int[]purchases) {
-      StatsService service = new StatsService();
-      return StatsService.salesSum(purchases) / 12;
+    public int salesAverage( int[]purchases) {
+      return StatsService.salesSum(purchases) / purchases.length;
     }
-    public static int maxSalesMonth (int[] purchases) {
+    public int maxSalesMonth (int[] purchases) {
         int month = 0;
         int max = 0;
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < purchases.length; i++) {
             if (purchases[i] >= max) {
                 max = purchases[i];
                 month = i + 1;
@@ -23,10 +22,10 @@ public class StatsService {
         }
         return month;
     }
-    public static int minSalesMonth (int[] purchases){
+    public int minSalesMonth (int[] purchases){
         int month = 0;
         int min = purchases[0];
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < purchases.length; i++) {
             if (purchases[i] <= min) {
                 min = purchases[i];
                 month = i + 1;
@@ -34,10 +33,10 @@ public class StatsService {
         }
         return month;
     }
-    public static int saleUnderAverage (int[] purchases){
-    int averageSales = StatsService.salesSum(purchases) / 12;
+    public int saleUnderAverage (int[] purchases){
+    int averageSales = StatsService.salesSum(purchases) / purchases.length;
     int quantity = 0;
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < purchases.length; i++) {
         if (purchases[i] < averageSales){
             quantity = quantity + 1;
         }
@@ -45,10 +44,10 @@ public class StatsService {
         return quantity;
 }
 
-    public static int saleOverAverage (int[] purchases){
-        int averageSales = StatsService.salesSum(purchases) / 12;
+    public int saleOverAverage (int[] purchases){
+        int averageSales = StatsService.salesSum(purchases) / purchases.length;
         int quantity = 0;
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < purchases.length; i++) {
             if (purchases[i] > averageSales){
                 quantity = quantity + 1;
             }
