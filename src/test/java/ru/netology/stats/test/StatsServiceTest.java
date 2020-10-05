@@ -24,8 +24,7 @@ public class StatsServiceTest {
     void salesAverage() {
         int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         {
-            StatsService service = new StatsService();
-            int averageSales = StatsService.salesSum(purchases) / 12;
+            int averageSales = StatsService.salesSum(purchases) / purchases.length;
             int expected = 15;
             int actual = averageSales;
             assertEquals(expected, averageSales);
@@ -38,7 +37,7 @@ public class StatsServiceTest {
         {
             int month = 0;
             int max = 0;
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < purchases.length; i++) {
                 if (purchases[i] >= max) {
                     max = purchases[i];
                     month = i + 1;
@@ -56,7 +55,7 @@ public class StatsServiceTest {
         {
             int month = 0;
             int min = purchases[0];
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < purchases.length; i++) {
                 if (purchases[i] < min) {
                     min = purchases[i];
                     month = i + 1;
@@ -72,9 +71,9 @@ public class StatsServiceTest {
     void saleUnderAverage() {
         int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         {
-int averageSales = StatsService.salesSum(purchases) / 12;
+int averageSales = StatsService.salesSum(purchases) / purchases.length;
             int quantity = 0;
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < purchases.length; i++) {
                 if (purchases[i] < averageSales) {
                     quantity = quantity + 1;
                 }
@@ -89,9 +88,9 @@ int averageSales = StatsService.salesSum(purchases) / 12;
     void saleOverAverage() {
         int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         {
-            int averageSales = StatsService.salesSum(purchases) / 12;
+            int averageSales = StatsService.salesSum(purchases) / purchases.length;
             int quantity = 0;
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < purchases.length; i++) {
                 if (purchases[i] > averageSales) {
                     quantity = quantity + 1;
                 }
